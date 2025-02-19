@@ -5,7 +5,7 @@ import Button from "../../customInputComponents/Button";
 import BaggageDeatials from "./components/baggage";
 import SecureTripBox from "./components/secureTrip";
 
-const AdditionalInformation = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLoggedIn , setSecureTrip}) => {
+const AdditionalInformation = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLoggedIn , setSecureTrip, setNonLoggedIn}) => {
   const handleNext = () => {
     setScreenStatus({ ...screenStatus, step2: "complete", step3: "progress" });
   };
@@ -22,6 +22,7 @@ const AdditionalInformation = ({ setScreenStatus, screenStatus, isLoggedIn, setI
     localStorage.removeItem("passengers"); 
     localStorage.removeItem("contactDetails"); 
     setIsLoggedIn(false)
+    setNonLoggedIn(false)
   };
 
   return (

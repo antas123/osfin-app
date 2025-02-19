@@ -7,7 +7,7 @@ import Button from "../../customInputComponents/Button";
 import { useEffect } from "react";
 import SecureTripBox from "../AdditionalInformation/components/secureTrip";
 
-const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn, secureTrip  }) => {
+const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn, secureTrip, setNonLoggedIn  }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -28,6 +28,7 @@ const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn, s
     localStorage.removeItem("passengers"); 
     localStorage.removeItem("contactDetails"); 
     setIsLoggedIn(false)
+    setNonLoggedIn(false)
   };
 
   return (

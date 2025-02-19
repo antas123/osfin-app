@@ -6,7 +6,7 @@ import AdditionalInformation from "../../Screens/AdditionalInformation";
 import ReviewStep from "../../Screens/ReviewStep";
 import SuccessScreen from "../../Screens/SuccessScreen";
 
-const DashBoard = ({isLoggedIn, setIsLoggedIn}) => {
+const DashBoard = ({isLoggedIn, setIsLoggedIn, setNonLoggedIn}) => {
   const [screenStatus, setScreenStatus] = useState({
     step1: "progress",
     step2: "pending",
@@ -36,6 +36,7 @@ const DashBoard = ({isLoggedIn, setIsLoggedIn}) => {
                   setScreenStatus={setScreenStatus}
                   isLoggedIn={isLoggedIn}
                   setIsLoggedIn={setIsLoggedIn}
+                  setNonLoggedIn={setNonLoggedIn}
                 />
               </div>
             ) : screenStatus.step2 === "progress" ? (
@@ -45,6 +46,7 @@ const DashBoard = ({isLoggedIn, setIsLoggedIn}) => {
                   setScreenStatus={setScreenStatus}
                   isLoggedIn={isLoggedIn}
                   setIsLoggedIn={setIsLoggedIn}
+                  setNonLoggedIn={setNonLoggedIn}
                 />
               </div>
             ) : (
@@ -53,6 +55,7 @@ const DashBoard = ({isLoggedIn, setIsLoggedIn}) => {
                 setScreenStatus={setScreenStatus}
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
+                setNonLoggedIn={setNonLoggedIn}
               />
             )}
           </div>

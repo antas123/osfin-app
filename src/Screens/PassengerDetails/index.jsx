@@ -7,7 +7,7 @@ import PassengerList from "./components/SavedPassengerList";
 import styles from "./step1.module.css";
 import { validatePassengers, handlePassengerSelection } from "./helper";
 
-const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLoggedIn }) => {
+const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLoggedIn, setNonLoggedIn }) => {
   const savedPassengers = JSON.parse(localStorage.getItem("passengers")) || [
     { name: "", age: "", gender: "" },
   ];
@@ -22,6 +22,7 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
     localStorage.removeItem("passengers"); 
     localStorage.removeItem("contactDetails"); 
     setIsLoggedIn(false)
+    setNonLoggedIn(false)
   };
   
 
