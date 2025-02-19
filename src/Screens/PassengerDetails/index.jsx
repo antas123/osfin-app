@@ -19,12 +19,11 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
   };
 
   const handleCancel = () => {
-    localStorage.removeItem("passengers"); 
-    localStorage.removeItem("contactDetails"); 
-    setIsLoggedIn(false)
-    setNonLoggedIn(false)
+    localStorage.removeItem("passengers");
+    localStorage.removeItem("contactDetails");
+    setIsLoggedIn(false);
+    setNonLoggedIn(false);
   };
-  
 
   const [passengers, setPassengers] = useState(savedPassengers);
   const [contactDetails, setContactDetails] = useState(savedContactDetails);
@@ -63,11 +62,31 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
   };
 
   const handlePassengerChange = (index, field, value) => {
+    // Clear the error for the specific field
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[`${field}_${index}`];
+      return newErrors;
+    });
+
+    // Update the passenger details
     setPassengers(
       passengers.map((passenger, i) =>
         i === index ? { ...passenger, [field]: value } : passenger
       )
     );
+  };
+
+  const handleContactChange = (field, value) => {
+    // Clear the error for the specific field
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[field];
+      return newErrors;
+    });
+
+    // Update the contact details
+    setContactDetails({ ...contactDetails, [field]: value });
   };
 
   const handleSelectPassenger = (selectedPassenger, isChecked) => {
@@ -78,7 +97,7 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
 
   return (
     <div>
-      <img src={ticket} alt="Ticket" />
+      <img width={'92%'} src={ticket} alt="Ticket" />
       <StepHeader step={1} />
       {isLoggedIn && (
         <PassengerList onSelectPassenger={handleSelectPassenger} />
@@ -177,7 +196,7 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
             placeholder="Phone Number"
             name="phone"
             value={contactDetails.phone}
-            onChange={(v) => setContactDetails({ ...contactDetails, phone: v })}
+            onChange={(v) => handleContactChange("phone", v)}
             error={errors?.phone}
           />
           <Input
@@ -185,7 +204,7 @@ const PassengerDetails = ({ setScreenStatus, screenStatus, isLoggedIn, setIsLogg
             placeholder="Email"
             name="email"
             value={contactDetails.email}
-            onChange={(v) => setContactDetails({ ...contactDetails, email: v })}
+            onChange={(v) => handleContactChange("email", v)}
             error={errors?.email}
           />
         </div>

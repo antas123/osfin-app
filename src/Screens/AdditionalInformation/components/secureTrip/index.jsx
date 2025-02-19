@@ -5,7 +5,7 @@ import ambulance from "../../../../assets/ambulance.png";
 import clock from "../../../../assets/clock.png";
 import Card from "./Card";
 
-const SecureTripBox = ({ setSecureTrip, step=2 }) => {
+const SecureTripBox = ({ setSecureTrip, step = 2 }) => {
   const handleRadioChange = (value) => {
     setSecureTrip(value);
   };
@@ -70,7 +70,7 @@ const SecureTripBox = ({ setSecureTrip, step=2 }) => {
         </div>
       </div>
       {step !== 3 && (
-        <div>
+        <div style={{ marginTop: 20, marginBottom: 10 }}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <input
               type="radio"

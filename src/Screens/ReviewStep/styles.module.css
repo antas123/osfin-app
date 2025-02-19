@@ -121,7 +121,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  gap: 850px;
+  gap: 70%;
   margin-bottom: 10px;
 }
 

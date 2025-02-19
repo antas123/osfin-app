@@ -12,7 +12,7 @@ function App() {
     setIsLoggedIn(loggedInStatus);
   }, []);
 
-  return isLoggedIn || nonLoggedIn ? <DashBoard setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>: <LoginScreen setNonLoggedIn={setNonLoggedIn} setIsLoggedIn={setIsLoggedIn} />;
+  return isLoggedIn || nonLoggedIn ? <DashBoard setNonLoggedIn={setNonLoggedIn} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>: <LoginScreen setNonLoggedIn={setNonLoggedIn} setIsLoggedIn={setIsLoggedIn} />;
 }
 
 export default App;
