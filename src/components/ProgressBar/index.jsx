@@ -45,6 +45,14 @@ const ProgressBar = ({ step1Status, step2Status, step3Status }) => {
               className={`${styles.pending} ${
                 step.status === "complete" ? styles.complete : ""
               }`}
+              style={{
+                color:
+                  step.status === "progress"
+                    ? "#0368C8"
+                    : step.status === "complete"
+                    ? "#008C76"
+                    : "#A8A8A8",
+              }}
             >
               {step.status === "complete"
                 ? "Complete"

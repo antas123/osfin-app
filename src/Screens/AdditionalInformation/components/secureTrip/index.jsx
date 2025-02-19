@@ -77,7 +77,10 @@ const SecureTripBox = ({ setSecureTrip, step = 2 }) => {
               name="secureTrip"
               onChange={() => handleRadioChange(true)}
             />
-            <p style={{ margin: 0, marginLeft: 8 }}>Yes, Secure my trip</p>
+            <p style={{ margin: 0, marginLeft: 8 }}>
+              {" "}
+              <span style={{ fontWeight: 600 }}>Yes,</span> Secure my trip
+            </p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", marginTop: 8 }}>
@@ -86,7 +89,10 @@ const SecureTripBox = ({ setSecureTrip, step = 2 }) => {
               name="secureTrip"
               onChange={() => handleRadioChange(false)}
             />
-            <p style={{ margin: 0, marginLeft: 8 }}>No, Don't Secure my trip</p>
+            <p style={{ margin: 0, marginLeft: 8 }}>
+              {" "}
+              <span style={{ fontWeight: 600 }}>No,</span> Don't Secure my trip
+            </p>
           </div>
         </div>
       )}

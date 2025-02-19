@@ -7,17 +7,22 @@ export const validatePassengers = (passengers, contactDetails) => {
     const ageDiff = today.getFullYear() - dob.getFullYear();
 
     // Validate name
-    if (!passenger.name.trim())
+    if (!passenger.name.trim()) {
       errors[`name_${index}`] = "Full Name is required";
+    } else if (passenger.name.trim().length < 3) {
+      errors[`name_${index}`] = "Name should be at least 3 characters long";
+    }
 
     // Validate age
     if (!passenger.age.trim()) {
       errors[`age_${index}`] = "Date of Birth is required";
     } else {
-      if (dob > today)
+      if (dob > today) {
         errors[`age_${index}`] = "Date of Birth cannot be in the future";
-      if (ageDiff > 90)
+      }
+      if (ageDiff > 90) {
         errors[`age_${index}`] = "Age should not be more than 90 years";
+      }
     }
 
     // Validate gender
@@ -27,7 +32,13 @@ export const validatePassengers = (passengers, contactDetails) => {
   });
 
   // Validate phone
-  if (!contactDetails.phone.trim()) errors.phone = "Phone Number is required";
+  if (!contactDetails.phone.trim()) {
+    errors.phone = "Phone Number is required";
+  } else {
+    if (contactDetails.phone.length !== 10) {
+      errors.phone = "Enter a valid phone number 10 digits long";
+    }
+  }
 
   // Validate email
   if (!contactDetails.email.trim()) {

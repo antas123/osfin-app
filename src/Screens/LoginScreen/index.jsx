@@ -48,6 +48,10 @@ const LoginScreen = ({
 
     // Proceed with login if valid
     if (valid) {
+      if (!isNonLoggedInAndStepsComplete) {
+        localStorage.removeItem("passengers");
+        localStorage.removeItem("contactDetails");
+      }
       localStorage.setItem("isLoggedIn", "true");
       setLoading(true);
       setTimeout(() => {
