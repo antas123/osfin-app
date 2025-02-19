@@ -17,12 +17,17 @@ const SuccessScreen = () => {
 
     setPassengers(storedPassengers);
     setContactDetails(storedContact);
-  }, []);
+
+    // return () => {
+    //   localStorage.removeItem("passengers");
+    //   localStorage.removeItem("contactDetails");
+    // };
+  }, []); 
 
   const calculateAge = (dateOfBirth) => {
-    const dob = new Date(dateOfBirth); 
-    const today = new Date(); 
-    let age = today.getFullYear() - dob.getFullYear(); 
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
 
     const monthDiff = today.getMonth() - dob.getMonth();
     if (
@@ -42,7 +47,7 @@ const SuccessScreen = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom:20
+        marginBottom: 20,
       }}
     >
       <div style={{ textAlign: "center", marginTop: 30 }}>
@@ -227,11 +232,13 @@ const SuccessScreen = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop:30
+            marginTop: 30,
           }}
         >
-          <p style={{ margin: 0 , fontSize:16, fontWeight:600}}>Total Fare</p>
-          <p style={{ margin: 0 , fontSize:16, fontWeight:600}}>${passengers.length*300}</p>
+          <p style={{ margin: 0, fontSize: 16, fontWeight: 600 }}>Total Fare</p>
+          <p style={{ margin: 0, fontSize: 16, fontWeight: 600 }}>
+            ${passengers.length * 300}
+          </p>
         </div>
       </div>
     </div>

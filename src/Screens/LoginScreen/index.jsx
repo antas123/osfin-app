@@ -5,13 +5,19 @@ import subtract from "../../assets/Subtract.png";
 import Button from "../../customInputComponents/Button";
 import { useState } from "react";
 
-const LoginScreen = ({ setIsLoggedIn, setNonLoggedIn }) => {
+const LoginScreen = ({
+  setIsLoggedIn,
+  setNonLoggedIn,
+  isNonLoggedInAndStepsComplete,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passWordError, setPasswordError] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const handleGoToPlatform = () => {
+    localStorage.removeItem("passengers");
+    localStorage.removeItem("contactDetails");
     setNonLoggedIn(true);
   };
 
@@ -43,20 +49,18 @@ const LoginScreen = ({ setIsLoggedIn, setNonLoggedIn }) => {
     // Proceed with login if valid
     if (valid) {
       localStorage.setItem("isLoggedIn", "true");
-      setLoading(true)
+      setLoading(true);
       setTimeout(() => {
-        setLoading(false)
+        setLoading(false);
         setIsLoggedIn(true);
       }, 2000);
     }
   };
 
-  console.log(email, "joker4");
+  console.log(isNonLoggedInAndStepsComplete, "joker4");
   return (
     <div className={styles.container}>
-      {
-        loading && <div className={styles.loader}></div>
-      }
+      {loading && <div className={styles.loader}></div>}
       <div style={{ flex: 2.5 }}>
         <img
           src={loginImage}
@@ -109,10 +113,12 @@ const LoginScreen = ({ setIsLoggedIn, setNonLoggedIn }) => {
             width={325}
           />
         </div>
-        <p onClick={handleGoToPlatform} className={styles.bottomText}>
-          Continue without login?{" "}
-          <span className={styles.platform}>Go to platform</span>
-        </p>
+        {!isNonLoggedInAndStepsComplete && (
+          <p onClick={handleGoToPlatform} className={styles.bottomText}>
+            Continue without login?{" "}
+            <span className={styles.platform}>Go to platform</span>
+          </p>
+        )}
       </div>
     </div>
   );

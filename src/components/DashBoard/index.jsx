@@ -6,16 +6,17 @@ import AdditionalInformation from "../../Screens/AdditionalInformation";
 import ReviewStep from "../../Screens/ReviewStep";
 import SuccessScreen from "../../Screens/SuccessScreen";
 
-const DashBoard = ({ isLoggedIn, setIsLoggedIn, setNonLoggedIn }) => {
-  const [screenStatus, setScreenStatus] = useState({
-    step1: "progress",
-    step2: "pending",
-    step3: "pending",
-  });
+const DashBoard = ({
+  isLoggedIn,
+  setIsLoggedIn,
+  setNonLoggedIn,
+  screenStatus,
+  setScreenStatus,
+}) => {
   const [secureTrip, setSecureTrip] = useState(false);
   return (
     <>
-      {screenStatus.step3 === "complete" ? (
+      {screenStatus?.step3 === "complete" ? (
         <SuccessScreen />
       ) : (
         <div style={{ display: "flex", flexDirection: "row" }}>
@@ -32,11 +33,11 @@ const DashBoard = ({ isLoggedIn, setIsLoggedIn, setNonLoggedIn }) => {
           >
             <p style={{ fontWeight: 700, fontSize: 20 }}>Booking Information</p>
             <ProgressBar
-              step1Status={screenStatus.step1}
-              step2Status={screenStatus.step2}
-              step3Status={screenStatus.step3}
+              step1Status={screenStatus?.step1}
+              step2Status={screenStatus?.step2}
+              step3Status={screenStatus?.step3}
             />
-            {screenStatus.step1 === "progress" ? (
+            {screenStatus?.step1 === "progress" ? (
               <div>
                 <PassengerDetails
                   screenStatus={screenStatus}
@@ -46,7 +47,7 @@ const DashBoard = ({ isLoggedIn, setIsLoggedIn, setNonLoggedIn }) => {
                   setNonLoggedIn={setNonLoggedIn}
                 />
               </div>
-            ) : screenStatus.step2 === "progress" ? (
+            ) : screenStatus?.step2 === "progress" ? (
               <div>
                 <AdditionalInformation
                   screenStatus={screenStatus}
