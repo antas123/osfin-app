@@ -3,7 +3,6 @@ import styles from "./input.module.css";
 
 const Input = ({ label, type, value, onChange, placeholder, containerStyle, error }) => {
 
-    // Handle input change
     const handleChange = (e) => {
         const inputValue = e.target.value;
         onChange(inputValue);

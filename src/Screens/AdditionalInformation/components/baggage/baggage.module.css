@@ -1,0 +1,63 @@
+/* baggage.module.css */
+
+.container {
+    padding: 20px;
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .header {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 3px;
+  }
+  
+  .header span {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .baggageOptions {
+    display: flex;
+    flex-direction: row;
+    gap: 39px;
+  }
+  
+  .option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .option p {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 3px;
+    color: #626262;
+  }
+  
+  .option p span {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+  }
+  
+  .infoBox {
+    background-color: #ECEFFF;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .infoBox p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  .infoBox p:first-child {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }

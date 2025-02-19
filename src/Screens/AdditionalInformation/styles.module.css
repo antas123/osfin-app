@@ -1,0 +1,19 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 850px;
+    margin-bottom: 10px;
+  }
+  
+  .cancelText {
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 15px;
+  }

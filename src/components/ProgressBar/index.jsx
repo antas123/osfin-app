@@ -2,7 +2,7 @@ import Step from "./components/CurrentStep";
 import styles from "./progressbar.module.css";
 import complete from "../../assets/stepComplete.png";
 
-const ProgressBar = ({ step1Status = "complete", step2Status = "progress", step3Status }) => {
+const ProgressBar = ({ step1Status, step2Status, step3Status }) => {
   const steps = [
     { number: 1, name: "Passenger Details", status: step1Status },
     { number: 2, name: "Additional Information", status: step2Status },
@@ -27,8 +27,9 @@ const ProgressBar = ({ step1Status = "complete", step2Status = "progress", step3
             {index < steps.length - 1 && (
               <div
                 key={`bar-${index}`}
-                className={styles.bar}
-                style={{ backgroundColor: step.status === "complete" ? "black" : "#D9D9D9" }}
+                className={`${styles.bar} ${
+                  step.status === "complete" ? styles.complete : ""
+                }`}
               ></div>
             )}
           </>
@@ -37,9 +38,19 @@ const ProgressBar = ({ step1Status = "complete", step2Status = "progress", step3
       <div className={styles.label}>
         {steps.map((step) => (
           <div key={step.number}>
-            <p style={{ margin: 0, fontSize: 14, fontWeight: 600 }}>{step.name}</p>
-            <p className={styles.pending}>
-              {step.status === "complete" ? "Complete" : step.status === "progress" ? "In progress" : "Pending"}
+            <p style={{ margin: 0, fontSize: 14, fontWeight: 600 }}>
+              {step.name}
+            </p>
+            <p
+              className={`${styles.pending} ${
+                step.status === "complete" ? styles.complete : ""
+              }`}
+            >
+              {step.status === "complete"
+                ? "Complete"
+                : step.status === "progress"
+                ? "In progress"
+                : "Pending"}
             </p>
           </div>
         ))}

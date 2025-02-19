@@ -41,7 +41,7 @@ const SideNavbar = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: "#F6F6F6", height: "100vh" }}>
+    <div style={{ backgroundColor: "#F6F6F6", height: "100%" }}>
       <div className={styles.logo}>
         <img src={logo} alt="logo" height={31} width={32} />
         <h3 style={{ margin: 5 }}>Trailbliss</h3>

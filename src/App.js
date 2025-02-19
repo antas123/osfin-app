@@ -4,6 +4,7 @@ import DashBoard from "./components/DashBoard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [nonLoggedIn, setNonLoggedIn] = useState(false);
 
   useEffect(() => {
     // Check if the user is already logged in
@@ -11,7 +12,7 @@ function App() {
     setIsLoggedIn(loggedInStatus);
   }, []);
 
-  return 'isLoggedIn' ? <DashBoard/>: <LoginScreen setIsLoggedIn={setIsLoggedIn} />;
+  return isLoggedIn || nonLoggedIn ? <DashBoard setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>: <LoginScreen setNonLoggedIn={setNonLoggedIn} setIsLoggedIn={setIsLoggedIn} />;
 }
 
 export default App;

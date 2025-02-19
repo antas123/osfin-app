@@ -1,0 +1,37 @@
+/* trip.module.css */
+
+.container {
+    background-color: #FDF1DC;
+    border-radius: 10px;
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .priceText {
+    margin-top: 0;
+  }
+  
+  .priceText span {
+    font-weight: 600;
+    font-size: 22px;
+  }
+  
+  .cardContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .upperText {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .upperText span {
+    font-size: 18px;
+    color: green;
+  }
+  
+  .lowerText {
+    margin: 5px;
+  }

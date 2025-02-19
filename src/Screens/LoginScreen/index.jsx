@@ -5,16 +5,19 @@ import subtract from "../../assets/Subtract.png";
 import Button from "../../customInputComponents/Button";
 import { useState } from "react";
 
-const LoginScreen = ({setIsLoggedIn}) => {
-
+const LoginScreen = ({ setIsLoggedIn, setNonLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("")
-  const [passWordError, setPasswordError] = useState("")
+  const [emailError, setEmailError] = useState("");
+  const [passWordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false)
+  const handleGoToPlatform = () => {
+    setNonLoggedIn(true);
+  };
 
   const handleLogin = () => {
     let valid = true;
-  
+
     // Email validation
     if (!email.trim()) {
       setEmailError("Email is required.");
@@ -25,7 +28,7 @@ const LoginScreen = ({setIsLoggedIn}) => {
     } else {
       setEmailError(""); // Clear error if valid
     }
-  
+
     // Password validation
     if (!password.trim()) {
       setPasswordError("Password is required.");
@@ -36,17 +39,24 @@ const LoginScreen = ({setIsLoggedIn}) => {
     } else {
       setPasswordError(""); // Clear error if valid
     }
-  
+
     // Proceed with login if valid
     if (valid) {
       localStorage.setItem("isLoggedIn", "true");
-      setIsLoggedIn(true);
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+        setIsLoggedIn(true);
+      }, 2000);
     }
   };
-  
-console.log(email,'joker4')
+
+  console.log(email, "joker4");
   return (
     <div className={styles.container}>
+      {
+        loading && <div className={styles.loader}></div>
+      }
       <div style={{ flex: 2.5 }}>
         <img
           src={loginImage}
@@ -67,10 +77,15 @@ console.log(email,'joker4')
             placeholder={"Enter Email Address"}
             containerStyle={styles.inputSpacing}
             label={"Email"}
-            onChange={(val)=>setEmail(val)}
+            onChange={(val) => setEmail(val)}
             error={emailError}
           />
-          <Input error={passWordError} placeholder={"Enter Password"} label={"Password"}  onChange={(val)=>setPassword(val)} />
+          <Input
+            error={passWordError}
+            placeholder={"Enter Password"}
+            label={"Password"}
+            onChange={(val) => setPassword(val)}
+          />
           <div
             style={{
               display: "flex",
@@ -87,9 +102,14 @@ console.log(email,'joker4')
             </div>
             <p className={styles.forgotText}>Forgot password?</p>
           </div>
-          <Button onClick={handleLogin} label={"Login"} backgroundColor={"black"} width={325} />
+          <Button
+            onClick={handleLogin}
+            label={"Login"}
+            backgroundColor={"black"}
+            width={325}
+          />
         </div>
-        <p className={styles.bottomText}>
+        <p onClick={handleGoToPlatform} className={styles.bottomText}>
           Continue without login?{" "}
           <span className={styles.platform}>Go to platform</span>
         </p>
