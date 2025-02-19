@@ -5,8 +5,9 @@ import PassengerListing from "./components/PassengersListing";
 import styles from "./styles.module.css";
 import Button from "../../customInputComponents/Button";
 import { useEffect } from "react";
+import SecureTripBox from "../AdditionalInformation/components/secureTrip";
 
-const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn  }) => {
+const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn, secureTrip  }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -35,6 +36,9 @@ const ReviewStep = ({ setScreenStatus, screenStatus,isLoggedIn, setIsLoggedIn  }
       <FlightDetails />
       <PassengerListing />
       <BaggageDetails step={3} />
+      {
+        secureTrip && <SecureTripBox step={3}/>
+      }
       <div style={{ marginTop: 20 }} className={styles.container}>
         <p className={styles.cancelText}  onClick={handleCancel} >Cancel</p>
         <div className={styles.buttonContainer}>

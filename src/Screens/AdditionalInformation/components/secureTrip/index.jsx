@@ -5,7 +5,11 @@ import ambulance from "../../../../assets/ambulance.png";
 import clock from "../../../../assets/clock.png";
 import Card from "./Card";
 
-const SecureTripBox = () => {
+const SecureTripBox = ({ setSecureTrip, step=2 }) => {
+  const handleRadioChange = (value) => {
+    setSecureTrip(value);
+  };
+
   let data = [
     {
       icon: luggage,
@@ -46,10 +50,9 @@ const SecureTripBox = () => {
       ),
     },
   ];
-
   return (
     <div>
-      <h3>Make your trip secure</h3>
+      <h3> {step === 3 ? "Your trip is Secured" : "Make your trip secured"}</h3>
 
       <div className={styles.container}>
         <p className={styles.priceText}>
@@ -66,18 +69,27 @@ const SecureTripBox = () => {
           ))}
         </div>
       </div>
+      {step !== 3 && (
+        <div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input
+              type="radio"
+              name="secureTrip"
+              onChange={() => handleRadioChange(true)}
+            />
+            <p style={{ margin: 0, marginLeft: 8 }}>Yes, Secure my trip</p>
+          </div>
 
-      <div>
-        <div style={{ display: "flex" }}>
-          <input type="radio" />
-          <p >Yes, Secure my trip</p>
+          <div style={{ display: "flex", alignItems: "center", marginTop: 8 }}>
+            <input
+              type="radio"
+              name="secureTrip"
+              onChange={() => handleRadioChange(false)}
+            />
+            <p style={{ margin: 0, marginLeft: 8 }}>No, Don't Secure my trip</p>
+          </div>
         </div>
-        <div style={{ display: "flex" }}>
-          <input type="radio" />
-          <p style={{ margin: 0 }}>No, Don't Secure my trip</p>
-        </div>
-      </div>
-
+      )}
     </div>
   );
 };
